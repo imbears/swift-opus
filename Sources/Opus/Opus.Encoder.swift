@@ -8,7 +8,7 @@ extension Opus {
 		let encoder: OpaquePointer
 
 		// TODO: throw an error if format is unsupported
-		public init(format: AVAudioFormat, application: Application = .audio) throws {
+	    public init(format: AVAudioFormat, bitRate: Int = 128000, application: Application = .audio) throws {
 			if !format.isValidOpusPCMFormat {
 				throw Opus.Error.badArgument
 			}
@@ -22,7 +22,7 @@ extension Opus {
 			if error != .ok {
 				throw error
 			}
-		    opus_encoder_ctl(encoder, OPUS_SET_BITRATE(128000))
+			opus_encoder_ctl(encoder, Int32(bitRate))
 		}
 
 		deinit {
