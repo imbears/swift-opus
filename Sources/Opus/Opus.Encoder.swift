@@ -22,7 +22,6 @@ extension Opus {
 			if error != .ok {
 				throw error
 			}
-			opus_encoder_ctl(encoder, Int32(bitRate))
 		}
 
 		deinit {
