@@ -22,6 +22,7 @@ extension Opus {
 			if error != .ok {
 				throw error
 			}
+		    opus_encoder_ctl(encoder, OPUS_SET_BITRATE(128000))
 		}
 
 		deinit {
